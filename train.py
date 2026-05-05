@@ -56,14 +56,17 @@ def create_model(X):
     return model
 
 
-def config_mlflow():
-    os.environ['MLFLOW_TRACKING_USERNAME'] = 'renansantosmendes'
-    os.environ['MLFLOW_TRACKING_PASSWORD'] = '6d730ef4a90b1caf28fbb01e5748f0874fda6077'
-    mlflow.set_tracking_uri('https://dagshub.com/renansantosmendes/mlops-ead-2025.mlflow')
 
-    mlflow.keras.autolog(log_models=True,
-                         log_input_examples=True,
-                         log_model_signatures=True)
+
+
+# def config_mlflow():
+#     os.environ['MLFLOW_TRACKING_USERNAME'] = 'renansantosmendes'
+#     os.environ['MLFLOW_TRACKING_PASSWORD'] = '6d730ef4a90b1caf28fbb01e5748f0874fda6077'
+#     mlflow.set_tracking_uri('https://dagshub.com/renansantosmendes/mlops-ead-2025.mlflow')
+#
+#     mlflow.keras.autolog(log_models=True,
+#                          log_input_examples=True,
+#                          log_model_signatures=True)
 
 
 def train_model(model, X_train, y_train, is_train=True):
@@ -84,3 +87,14 @@ if __name__ == "__main__":
     model = create_model(X)
     config_mlflow()
     train_model(model, X_train, y_train)
+
+
+import dagshub
+dagshub.init(repo_owner='augusto.cesar.tavares.a',
+             repo_name='Mlops',
+             mlflow=True)
+
+import mlflow
+with mlflow.start_run():
+  mlflow.log_param('parameter name', 'value')
+  mlflow.log_metric('metric name', 1)
