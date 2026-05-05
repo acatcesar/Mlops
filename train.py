@@ -59,14 +59,14 @@ def create_model(X):
 
 
 
-# def config_mlflow():
-#     os.environ['MLFLOW_TRACKING_USERNAME'] = 'renansantosmendes'
-#     os.environ['MLFLOW_TRACKING_PASSWORD'] = '6d730ef4a90b1caf28fbb01e5748f0874fda6077'
-#     mlflow.set_tracking_uri('https://dagshub.com/renansantosmendes/mlops-ead-2025.mlflow')
-#
-#     mlflow.keras.autolog(log_models=True,
-#                          log_input_examples=True,
-#                          log_model_signatures=True)
+def config_mlflow():
+    os.environ['MLFLOW_TRACKING_USERNAME'] = 'augusto.cesar.tavares.a'
+    os.environ['MLFLOW_TRACKING_PASSWORD'] = 'e9565564c0066af9d1e7384f1587d03ce4b12a6a'
+    mlflow.set_tracking_uri('https://dagshub.com/augusto.cesar.tavares.a/Mlops')
+
+    mlflow.keras.autolog(log_models=True,
+                         log_input_examples=True,
+                         log_model_signatures=True)
 
 
 def train_model(model, X_train, y_train, is_train=True):
